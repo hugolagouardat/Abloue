@@ -477,10 +477,6 @@ g path:hover {
 		});
 	}
 
-	function formatTel(value) {
-		
-	}
-
 	function card(loueur) {
 		const div = document.createElement('div');
 		div.className = 'module-card';
@@ -494,7 +490,7 @@ g path:hover {
 				<p><strong>Adresse:</strong> ${loueur.adresse}</p>
 				<p><strong>Département:</strong> ${nomDepartement}</p>
 				${loueur.commentaire ? `<p><strong>Commentaire:</strong> ${loueur.commentaire}</p>` : ''}
-				<p><strong>Téléphone:</strong> ${formatTel(loueur.tel)}</p>
+				<p><strong>Téléphone:</strong> ${loueur.tel}</p>
 				<p><strong>Mail:</strong> <a href="mailto:${loueur.mail}">${loueur.mail}</a></p>
 			</div>
 		`;
