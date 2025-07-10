@@ -1,0 +1,20 @@
+#filtreur {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    margin: 0rem 1rem;
+  }
+  .filtre {
+    display: flex;
+    flex-direction: column;
+  }
+  .filtre label {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+.filtre input[type="text"] {
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 1.5px solid #ccc;
+    font-size: 1rem;
+ }

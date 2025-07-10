@@ -2,208 +2,16 @@
 <html lang="fr">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Carte de France métropolitaine</title>
-	<script src="loueurs.js"></script>
-<style>
-html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	background-color: #f5f7fa;
-	overflow: hidden;
-	display: flex;
-}
+	<title>Abloue</title>
+	<script src="./data/loueurs.js"></script>
+	<script src="./data/departements.js"></script>
 
-body {
-	flex-direction: row;
-}
+	<script src="./js/abloue.js"></script>
 
-.carte {
-	height: 100vh;
-	width: 46%;
-	background-color: #fff;
-	border-right: 1px solid #ddd;
-	flex-shrink: 0;
-}
-
-.carte svg {
-	height: 100%;
-	width: 100%;
-	display: block;
-}
-
-#cardsContainer {
-	flex: 1;
-	overflow-y: auto;
-	max-height: 100vh;
-	padding: 1rem;
-	margin: 1rem;
-	background-color: #ffffff;
-	border-radius: 16px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-path {
-	stroke: #000;
-	stroke-width: 1px;
-	stroke-opacity: 0.25;
-	fill: #86aae0;
-	transition: fill 0.3s ease;
-}
-
-g:hover path {
-	fill: #86cce0;
-}
-
-g path:hover {
-	fill: #86eee0;
-	cursor: pointer;
-}
-
-.active {
-    fill: red !important;
-}
-
-#credit {
-	position: absolute;
-	top: 20px;
-	left: 20px;
-	background-color: #007bff;
-	color: white;
-	padding: 10px 16px;
-	border: none;
-	border-radius: 8px;
-	box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-	cursor: pointer;
-	font-weight: bold;
-	transition: background-color 0.3s ease;
-	z-index: 999;
-}
-
-#credit:hover {
-	background-color: #0056b3;
-}
-
-#modal {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.4);
-	display: none;
-	justify-content: center;
-	align-items: center;
-	z-index: 10000;
-}
-
-#coreModal {
-	background-color: #fff;
-	width: 70%;
-	height:85%;
-	padding: 30px;
-	border-radius: 20px;
-	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-	display: flex;
-	flex-direction: column;
-	position: relative;
-	overflow-y: auto;
-}
-
-#close {
-	position: absolute;
-	top: 12px;
-	right: 15px;
-	font-size: 20px;
-	font-weight: bold;
-	cursor: pointer;
-	color: #888;
-	transition: color 0.3s ease;
-}
-
-#close:hover {
-	color: #d33;
-}
-
-#content {
-	font-size: 15px;
-	line-height: 1.7;
-	color: #333;
-}
-
-#content h2 {
-	font-size: 22px;
-	margin-bottom: 15px;
-	text-align: center;
-	color: #333;
-	border-bottom: 1px solid #eee;
-	padding-bottom: 8px;
-}
-
-#content a {
-	color: #007bff;
-	text-decoration: none;
-	word-break: break-word;
-}
-
-#content a:hover {
-	text-decoration: underline;
-}
-
-.module-card {
-    background-color: #fefefe;
-    border-radius: 16px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.card-content {
-    flex: 1;
-}
-
-.module-card h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.2rem;
-    color: #333;
-}
-
-.module-card p {
-    margin: 0.3rem 0;
-    font-size: 0.95rem;
-    color: #555;
-}
-
-.module-card p strong {
-    color: #333;
-}
-
-.module-card a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.module-card a:hover {
-    text-decoration: underline;
-}
-
-#informations{
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	
-}
-
-#cardsTitre{
-	margin:1rem;
-}
-
-</style>
+	<link rel="stylesheet" href="./css/abloue.css">
+	<link rel="stylesheet" href="./css/card.css">
+	<link rel="stylesheet" href="./css/carte.css">
+	<link rel="stylesheet" href="./css/modal.css">
 
 </head>
 <body>
@@ -386,12 +194,7 @@ g path:hover {
 
 <script>
 
-	const departementsMap = new Map();
-	document.querySelectorAll('path[data-numerodepartement][data-nom]').forEach(path => {
-		const num = path.getAttribute('data-numerodepartement');
-		const nom = path.getAttribute('data-nom');
-		departementsMap.set(num, nom);
-	});
+	
 
 	function openModal(){
 		document.getElementById('modal').style.display = 'flex';
@@ -414,16 +217,11 @@ g path:hover {
 		ajusterTailleBody();
 
  		window.addEventListener('resize', ajusterTailleBody);
-		chargerDonnees('./loueurs.csv')
-			.then(donnees => {
-			window.listeLoueurs = donnees;
-			show(donnees);
-			})
-			.catch(error => console.error(error));
+		loueurs = chargerDonnees();
 	});
 
-	async function chargerDonnees(url) {
-		const lignes = nettoyerLignes(data);
+	function chargerDonnees() {
+		const lignes = nettoyerLignes(loueurs);
 		return parserCSV(lignes);
 	}
 
@@ -474,10 +272,9 @@ g path:hover {
 		
 		element.classList.add('active');
 		
-		const recherche = departementsMap.get(String(numDepartement)) + " (" + numDepartement + ")"
+		const recherche = departements[String(numDepartement)] + " (" + numDepartement + ")"
 
-
-		const resultat = listeLoueurs.filter(item => item.departement == numDepartement);
+		const resultat = loueurs.filter(item => item.departement == numDepartement);
 		const titre = document.getElementById('cardsTitre');
 		titre.textContent = `Recherche : ${recherche}, nombre de loueurs : ${resultat.length}`;
 		show(resultat);
@@ -507,7 +304,7 @@ g path:hover {
 		const div = document.createElement('div');
 		div.className = 'module-card';
 
-		const nomDepartement = departementsMap.get(String(loueur.departement)) + " (" + loueur.departement + ")" || `Département ${loueur.departement}`;
+		const nomDepartement = departements[String(loueur.departement)] + " (" + loueur.departement + ")" || `Département ${loueur.departement}`;
 
 		div.innerHTML = `
 			<span class="module-index">${loueur.ordre}</span>

@@ -1,0 +1,33 @@
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: #f5f7fa;
+	overflow: hidden;
+	display: flex;
+}
+
+body {
+	flex-direction: row;
+}
+
+#credit {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	background-color: #007bff;
+	color: white;
+	padding: 10px 16px;
+	border: none;
+	border-radius: 8px;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+	cursor: pointer;
+	font-weight: bold;
+	transition: background-color 0.3s ease;
+	z-index: 999;
+}
+
+#credit:hover {
+	background-color: #0056b3;
+}

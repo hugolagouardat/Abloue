@@ -1,4 +1,4 @@
-const data = `
+window.loueurs = `
 ﻿Loueur§Adresse§Departement§Commentaire§Ordre§Tel§Mail
 Alouer§83 Rue Nationale-Département 1§1§Disponible§1§0621080813§alouer@exemple.com
 BTP Loc§79 Rue de Paris-Département 1§1§Réservé§2§0645868471§btp_loc@exemple.com

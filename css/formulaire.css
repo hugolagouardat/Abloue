@@ -1,0 +1,78 @@
+#formulaireLoueur {
+	height: 100vh;
+	width: 46%;
+	background-color: #fff;
+	border-right: 1px solid #ddd;
+	flex-shrink: 0;
+    padding: 0% 2%;
+}
+
+#formulaireLoueur h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.formBloc {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formBloc label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #444;
+}
+
+.formBloc input[type="text"],
+.formBloc select,
+#filterDepartementSelect {
+  padding: 8px 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.formBloc input[type="text"]:focus,
+.formBloc select:focus,
+#filterDepartementSelect:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+.formBloc textarea {
+  width: 100%;
+  min-height: 80px;
+  max-height: 150px;
+  padding: 8px 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  resize: vertical;
+  font-family: inherit; 
+  box-sizing: border-box;
+}
+
+.formBloc button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formBloc button:hover {
+  background-color: #357ABD;
+}
+
+.formBloc button:active {
+  background-color: #2a5f9e;
+}

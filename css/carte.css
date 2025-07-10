@@ -1,0 +1,34 @@
+.carte {
+	height: 100vh;
+	width: 46%;
+	background-color: #fff;
+	border-right: 1px solid #ddd;
+	flex-shrink: 0;
+}
+
+.carte svg {
+	height: 100%;
+	width: 100%;
+	display: block;
+}
+
+path {
+	stroke: #000;
+	stroke-width: 1px;
+	stroke-opacity: 0.25;
+	fill: #86aae0;
+	transition: fill 0.3s ease;
+}
+
+g:hover path {
+	fill: #86cce0;
+}
+
+g path:hover {
+	fill: #86eee0;
+	cursor: pointer;
+}
+
+.active {
+    fill: red !important;
+}
