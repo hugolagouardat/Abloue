@@ -6,9 +6,13 @@
 	<script src="./data/loueurs.js"></script>
 	<script src="./data/departements.js"></script>
 
+    <script src="./js/jquery.js"></script>
+
     <script src="./js/abloueAdmin.js"></script>
-    <script src="./js/formulaire.js"></script>
+    <script src="./js/card.js"></script>
     <script src="./js/filtre.js"></script>
+    <script src="./js/formulaire.js"></script>
+    <script src="./js/modal.js"></script>
 
 	<link rel="stylesheet" href="./css/abloue.css">
 	<link rel="stylesheet" href="./css/card.css">
@@ -16,101 +20,21 @@
     <link rel="stylesheet" href="./css/formulaire.css">
 	<link rel="stylesheet" href="./css/modal.css">
     
-
 </head>
 <body>
     <form id="formulaireLoueur">
-        <h1>Formulaire loueurs :</h1>
-        <div class="formBloc">
-            <label>Nom :</label>
-            <input type="text" id="nomInput">
-        </div>
-        <div class="formBloc">
-            <label>Adresse :</label>
-            <input type="text" id="adresseInput">
-        </div>
-        <div class="formBloc">
-            <label>Département : </label>
-            <select id="departementSelect">
-                <!-- options à remplir par JS -->
-            </select>
-        </div>
-        <div class="formBloc">
-            <label>Téléphone :</label>
-            <input type="text" id="telInput">
-        </div>
-        <div class="formBloc">
-            <label>Mail :</label>
-            <input type="text" id="mailInput">
-        </div>
-        <div class="formBloc">
-            <label>Commentaire :</label>
-            <textarea id="commentInput"></textarea>
-        </div>
-        <div class="formBloc">
-            <button id="btnAjouter" type="submit">Ajouter</button>
-        </div>
+        
     </form>
     <div id="informations">
 		<h2 id="cardsTitre">Les loueurs</h2>
-        <div id="filtreur">
-            <div class="filtre">
-                <label>Nom</label>
-                <input type="text" id="filterNomInput" placeholder="Filtrer par nom..." />
-            </div>
-            <div class="filtre">
-                <label>Département</label>
-                <select id="filterDepartementSelect">
-                    <option value="" selected>Tous</option>
-                </select>
-            </div>
-        </div>
+        <div id="filtreur"></div>
 		<div id="cardsContainer"></div>
 	</div>
-    <script>
-
-	
-
-    function show(liste) {
-
-		const listeTriee = liste
-			.slice() 
-			.sort((a, b) => {
-
-				if (a.ordre == null && b.ordre == null) return 0;
-				if (a.ordre == null) return 1;
-				if (b.ordre == null) return -1;
-				return a.ordre - b.ordre;
-			});
-
-		const container = document.getElementById('cardsContainer');
-		container.innerHTML = '';
-		listeTriee.forEach(objet => {
-			const cardElement = card(objet);
-			container.appendChild(cardElement);
-		});
-	}
-
-    function card(loueur) {
-		const div = document.createElement('div');
-		div.className = 'module-card';
-
-		const nomDepartement = departements[String(loueur.departement)] + " (" + loueur.departement + ")" || `Département ${loueur.departement}`;
-
-		div.innerHTML = `
-			<span class="module-index">${loueur.ordre}</span>
-			<div class="card-content">
-				<h3>${loueur.loueur}</h3>
-				<p><strong>Adresse:</strong> ${loueur.adresse}</p>
-				<p><strong>Département:</strong> ${nomDepartement}</p>
-				${loueur.commentaire ? `<p><strong>Commentaire:</strong> ${loueur.commentaire}</p>` : ''}
-				<p><strong>Téléphone:</strong> ${loueur.tel}</p>
-				<p><strong>Mail:</strong> <a href="mailto:${loueur.mail}">${loueur.mail}</a></p>
-			</div>
-		`;
-
-		return div;
-	}
-    </script>
+    <div id="modal">
+        <div id="coreModal">
+            <div id="close" onclick="closeModal()">X</div>
+            <div id="content"></div>
+        </div>
+    </div>
 </body>
 </html>

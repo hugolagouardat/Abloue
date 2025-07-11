@@ -1,30 +1,13 @@
-function loadDepartementSelect() {
-    const selectForm = document.getElementById('departementSelect');
-    const selectFiltre = document.getElementById('filterDepartementSelect');
+jq('#formulaireLoueur').on('submit', function(event) {
+    event.preventDefault();
 
-    for (const [num, nom] of Object.entries(departements)) {
-        const optionForm = document.createElement('option');
-        optionForm.value = num;
-        optionForm.textContent = `${num} - ${nom}`;
-        selectForm.appendChild(optionForm);
-
-        const optionFiltre = document.createElement('option');
-        optionFiltre.value = num;
-        optionFiltre.textContent = `${num} - ${nom}`;
-        selectFiltre.appendChild(optionFiltre);
-    }
-}
-
-
-document.getElementById('formulaireLoueur').addEventListener('submit', function(event) {
-    event.preventDefault(); // empêche le rechargement
-
-    const nom = document.getElementById('nomInput').value.trim();
-    const adresse = document.getElementById('adresseInput').value.trim();
-    const departement = document.getElementById('departementSelect').value;
-    const tel = document.getElementById('telInput').value.trim();
-    const mail = document.getElementById('mailInput').value.trim();
-    const commentaire = document.getElementById('commentInput').value.trim();
+    const nom = jq('#nomInput').val().trim();
+    const adresse = jq('#adresseInput').val().trim();
+    const departement = jq('#departementSelect').val();
+    const tel = jq('#telInput').val().trim();
+    const mail = jq('#mailInput').val().trim();
+    const ordre = jq('#ordreInput').val().trim();
+    const commentaire = jq('#commentInput').val().trim();
 
     const loueur = {
         nom,
@@ -32,7 +15,8 @@ document.getElementById('formulaireLoueur').addEventListener('submit', function(
         departement,
         tel,
         mail,
-        commentaire
+        commentaire,
+        ordre
     };
 
     console.log("Nouveau loueur :", loueur);
@@ -40,5 +24,4 @@ document.getElementById('formulaireLoueur').addEventListener('submit', function(
     this.reset();
 });
 
-
-document.getElementById('btnAjouter').addEventListener('click', addLoueur);
+jq('#btnAjouter').on('click', addLoueur);

@@ -1,4 +1,4 @@
-.carte {
+#carte {
 	height: 100vh;
 	width: 46%;
 	background-color: #fff;
@@ -6,7 +6,7 @@
 	flex-shrink: 0;
 }
 
-.carte svg {
+#carte svg {
 	height: 100%;
 	width: 100%;
 	display: block;
