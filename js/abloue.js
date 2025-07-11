@@ -5,7 +5,7 @@ jq(async function() {
 
   jq(window).on('resize', ajusterTailleBody);
 
-  await loaderElement(); // attendre que tout soit chargé
+  await loaderElement(); 
 
   loueurs = chargerDonnees();
   show(loueurs);

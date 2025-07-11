@@ -1,64 +1,81 @@
 function loadDepartementSelect() {
-  console.log('je load')
     const selectFiltre = jq('#filterDepartementSelect');
-  console.log(selectFiltre)
     jq.each(departements, function(num, nom) {
-
         const optionFiltre = jq('<option></option>').val(num).text(`${num} - ${nom}`);
         selectFiltre.append(optionFiltre);
     });
-    console.log(departements)
 }
 
+function resetFilters() {
+    jq('#filterNomInput').val('');
+    jq('#filterDepartementSelect').val('');
+    jq('path').removeClass('active');
+    jq('#cardsTitre').text('');
+    show(loueurs);
+}
 
 function setupFiltreEvents() {
-  const nomInput = jq('#filterNomInput');
-  const departementSelect = jq('#filterDepartementSelect');
+    const nomInput = jq('#filterNomInput');
+    const departementSelect = jq('#filterDepartementSelect');
 
-  // quand on tape dans le champ texte
-  nomInput.on('input', filtrerEtAfficher);
-
-  // quand on change la sélection dans le select
-  departementSelect.on('change', filtrerEtAfficher);
+    nomInput.on('input', filtrerEtAfficher);
+    departementSelect.on('change', filtrerEtAfficher);
+    jq('#resetFilters').on('click', resetFilters);
 }
 
 function filtrerEtAfficher() {
-  const nomFilterValue = jq('#filterNomInput').val().trim().toLowerCase();
-  const departementFilterValue = jq('#filterDepartementSelect').val();
-
-  // on part de la liste globale complète
-  let filtered = loueurs;
-
-  if (nomFilterValue) {
-    filtered = filtered.filter(function(loueur) {
-      return loueur.loueur && loueur.loueur.toLowerCase().includes(nomFilterValue);
+    const nomFilterValue = jq('#filterNomInput').val().trim().toLowerCase();
+    const departementFilterValue = jq('#filterDepartementSelect').val();
+    jq('path').removeClass('active');
+    jq('path').each(function() {
+        if (jq(this).attr('data-numerodepartement') == departementFilterValue) {
+            jq(this).addClass('active');
+        }
     });
-  }
+    let filtered = loueurs;
 
-  if (departementFilterValue) {
-    filtered = filtered.filter(function(loueur) {
-      return loueur.departement === Number(departementFilterValue);
-    });
-  }
+    if (nomFilterValue) {
+        filtered = filtered.filter(function(loueur) {
+            return loueur.loueur && loueur.loueur.toLowerCase().includes(nomFilterValue);
+        });
+    }
 
-  show(filtered);
+    if (departementFilterValue) {
+        filtered = filtered.filter(function(loueur) {
+            return loueur.departement === Number(departementFilterValue);
+        });
+    }
+
+    if (departementFilterValue) {
+        const recherche = departements[String(departementFilterValue)] + " (" + departementFilterValue + ")";
+        jq('#cardsTitre').text(`Recherche : ${recherche}, nombre de loueurs : ${filtered.length}`);
+    } else {
+        jq('#cardsTitre').text(`Recherche : Tous, nombre de loueurs : ${filtered.length}`);
+    }
+
+    show(filtered);
 }
 
 function filtrer(element) {
-  const jqElement = jq(element);
-  const numDepartement = jqElement.attr('data-numerodepartement');
+    const jqElement = jq(element);
+    const numDepartement = jqElement.attr('data-numerodepartement');
 
-  jq('path').removeClass('active');
-  jqElement.addClass('active');
+    jq('#filterDepartementSelect option').each(function() {
+        if (jq(this).attr('value') == numDepartement) {
+            jq(this).prop('selected', true);
+        }
+    });
 
-  const recherche = departements[String(numDepartement)] + " (" + numDepartement + ")";
-  const resultat = loueurs.filter(function(item) {
-    return item.departement == numDepartement;
-  });
+    jq('path').removeClass('active');
+    jqElement.addClass('active');
 
-  jq('#cardsTitre').text(`Recherche : ${recherche}, nombre de loueurs : ${resultat.length}`);
-  show(resultat);
+    const recherche = departements[String(numDepartement)] + " (" + numDepartement + ")";
+    const resultat = loueurs.filter(function(item) {
+        return item.departement == numDepartement;
+    });
+
+    jq('#cardsTitre').text(`Recherche : ${recherche}, nombre de loueurs : ${resultat.length}`);
+    show(resultat);
 }
 
-// On exporte la fonction d'initialisation
 window.setupFiltreEvents = setupFiltreEvents;
