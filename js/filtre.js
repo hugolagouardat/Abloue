@@ -10,7 +10,7 @@ function resetFilters() {
     jq('#filterNomInput').val('');
     jq('#filterDepartementSelect').val('');
     jq('path').removeClass('active');
-    jq('#cardsTitre').text('');
+    jq('#loueursCount').text('');
     show(loueurs);
 }
 
@@ -46,12 +46,7 @@ function filtrerEtAfficher() {
         });
     }
 
-    if (departementFilterValue) {
-        const recherche = departements[String(departementFilterValue)] + " (" + departementFilterValue + ")";
-        jq('#cardsTitre').text(`Recherche : ${recherche}, nombre de loueurs : ${filtered.length}`);
-    } else {
-        jq('#cardsTitre').text(`Recherche : Tous, nombre de loueurs : ${filtered.length}`);
-    }
+    jq('#loueursCount').text(`${filtered.length} loueurs`);
 
     show(filtered);
 }
@@ -69,12 +64,11 @@ function filtrer(element) {
     jq('path').removeClass('active');
     jqElement.addClass('active');
 
-    const recherche = departements[String(numDepartement)] + " (" + numDepartement + ")";
     const resultat = loueurs.filter(function(item) {
         return item.departement == numDepartement;
     });
 
-    jq('#cardsTitre').text(`Recherche : ${recherche}, nombre de loueurs : ${resultat.length}`);
+    jq('#loueursCount').text(`${resultat.length} loueurs`);
     show(resultat);
 }
 
