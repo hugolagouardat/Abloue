@@ -63,7 +63,7 @@ function filtrer(element) {
 
     jq('path').removeClass('active');
     jqElement.addClass('active');
-
+console.log('loueurs:', loueurs);
     const resultat = loueurs.filter(function(item) {
         return item.departement == numDepartement;
     });

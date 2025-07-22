@@ -3,9 +3,7 @@ var jq = jQuery.noConflict();
 jq(async function() {
   ajusterTailleBody();
 
-  jq(window).on('resize', ajusterTailleBody);
-
-  await loaderElement(); 
+  jq(window).on('resize', ajusterTailleBody); 
 
   loueurs = chargerDonnees();
   show(loueurs);
@@ -66,25 +64,5 @@ function parserCSV(lignes) {
 
     return estValide ? obj : null;
   }).filter(obj => obj !== null);
-}
-
-function loadPage(element, page) {
-  return new Promise((resolve, reject) => {
-    jq(element).load('./components/element/' + page + '.html', function(response, status, xhr) {
-      if (status == "error") {
-        reject(xhr);
-      } else {
-        resolve();
-      }
-    });
-  });
-}
-
-
-function loaderElement() {
-  return Promise.all([
-    loadPage('#carte', 'carte'),
-    loadPage('#filtreur', 'filtre')
-  ]);
 }
 
