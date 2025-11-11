@@ -67,7 +67,6 @@ Abloue/
 │   ├── abloue.js        # Logique principale
 │   ├── card.js          # Gestion des cartes
 │   ├── filtre.js        # Système de filtrage
-│   ├── formulaire.js
 │   ├── modal.js
 │   └── jquery.js
 └── data/                # Données
