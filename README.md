@@ -4,6 +4,10 @@ Application web de visualisation et gestion de données géographiques par dépa
 
 **Exemple d'utilisation :** Cette application est actuellement configurée pour afficher des loueurs de matériel, mais elle peut être facilement adaptée pour tout type de données nécessitant une visualisation géographique par département (commerces, services, professionnels, événements, etc.).
 
+## 🌐 Démo en ligne
+
+[https://hugolagouardat.github.io/Abloue/abloue.html](https://hugolagouardat.github.io/Abloue/abloue.html)
+
 ## 📄 Licences
 
 Ce projet utilise deux licences différentes pour des composants distincts :
