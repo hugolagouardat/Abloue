@@ -1,3 +1,6 @@
+/* Styles des cartes d'affichage */
+
+/* Conteneur principal */
 #informations{
 	display: flex;
 	flex-direction: column;
@@ -8,6 +11,7 @@
 	margin: 0rem 1rem;
 }
 
+/* Conteneur de cartes */
 #cardsContainer {
 	flex: 1;
 	overflow-y: auto;
@@ -19,6 +23,7 @@
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+/* Carte individuelle */
 .module-card {
     background-color: #fefefe;
     border-radius: 16px;

@@ -1,5 +1,7 @@
+// Logique principale de l'application
 var jq = jQuery.noConflict();
 
+// Initialisation au chargement
 jq(async function() {
   ajusterTailleBody();
 
@@ -13,6 +15,7 @@ jq(async function() {
 });
 
 
+// Ajuster la taille du body à la fenêtre
 function ajusterTailleBody() {
   const largeur = jq(window).width();
   const hauteur = jq(window).height();
@@ -23,6 +26,7 @@ function ajusterTailleBody() {
   });
 }
 
+// Chargement et parsing des données CSV
 function chargerDonnees() {
   const lignes = nettoyerLignes(loueurs);
   return parserCSV(lignes);

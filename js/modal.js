@@ -1,3 +1,5 @@
+// Gestion de la modale
+
 function openModal(){
     jq('#modal').css('display', 'flex');
 }

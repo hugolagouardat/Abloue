@@ -1,3 +1,6 @@
+// Gestion de l'affichage des cartes
+
+// Affichage de la liste triée
 function show(liste) {
   const listeTriee = liste
     .slice()
@@ -17,6 +20,7 @@ function show(liste) {
   });
 }
 
+// Création d'une carte individuelle
 function card(loueur) {
   const nomDepartement = departements[String(loueur.departement)] + " (" + loueur.departement + ")" || `Département ${loueur.departement}`;
 

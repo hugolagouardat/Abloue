@@ -1,3 +1,6 @@
+/* Styles du système de filtrage */
+
+/* Conteneur des filtres */
 #filtreur {
     display: flex;
     gap: 12px;
@@ -5,6 +8,8 @@
     margin: 0rem 1rem;
     align-items: center;
 }
+
+/* Élément de filtre */
 .filtre {
     display: flex;
     flex-direction: column;
@@ -20,6 +25,8 @@
     font-size: 1rem;
     box-sizing: border-box;
 }
+
+/* Bouton de réinitialisation */
 .reset-button {
     padding: 6px;
     background-color: #ff0000;

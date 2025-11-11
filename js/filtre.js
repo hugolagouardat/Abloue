@@ -1,3 +1,6 @@
+// Système de filtrage
+
+// Chargement du select des départements
 function loadDepartementSelect() {
     const selectFiltre = jq('#filterDepartementSelect');
     jq.each(departements, function(num, nom) {
@@ -6,6 +9,7 @@ function loadDepartementSelect() {
     });
 }
 
+// Réinitialisation des filtres
 function resetFilters() {
     jq('#filterNomInput').val('');
     jq('#filterDepartementSelect').val('');
@@ -14,6 +18,7 @@ function resetFilters() {
     show(loueurs);
 }
 
+// Configuration des événements de filtrage
 function setupFiltreEvents() {
     const nomInput = jq('#filterNomInput');
     const departementSelect = jq('#filterDepartementSelect');
@@ -23,6 +28,7 @@ function setupFiltreEvents() {
     jq('#resetFilters').on('click', resetFilters);
 }
 
+// Application des filtres et mise à jour de l'affichage
 function filtrerEtAfficher() {
     const nomFilterValue = jq('#filterNomInput').val().trim().toLowerCase();
     const departementFilterValue = jq('#filterDepartementSelect').val();

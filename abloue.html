@@ -3,16 +3,21 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Abloue</title>
+        
+        <!-- Données -->
         <script src="./data/loueurs.js"></script>
         <script src="./data/departements.js"></script>
 
+        <!-- Librairies -->
         <script src="./js/jquery.js"></script>
 
+        <!-- Scripts principaux -->
         <script src="./js/card.js"></script>
         <script src="./js/filtre.js"></script>
         <script src="./js/modal.js"></script>
         <script src="./js/abloue.js"></script>
 
+        <!-- Styles -->
         <link rel="stylesheet" href="./css/abloue.css" />
         <link rel="stylesheet" href="./css/card.css" />
         <link rel="stylesheet" href="./css/carte.css" />
@@ -22,7 +27,10 @@
     </head>
 
     <body>
+        <!-- Bouton crédits -->
         <button id="credit" onclick="openModal()">Crédit</button>
+        
+        <!-- Carte interactive de France (Abcarte - CC BY 4.0) -->
         <div id="carte">
             <svg
                 version="1.1"
@@ -1720,8 +1728,12 @@
                 </g>
             </svg>
         </div>
+        
+        <!-- Panneau d'informations et filtres -->
         <div id="informations">
             <h2 id="cardsTitre"></h2>
+            
+            <!-- Système de filtrage -->
             <div id="filtreur">
                 <div class="filtre">
                     <label>Nom</label>
@@ -1740,9 +1752,12 @@
                 <button id="resetFilters" class="reset-button">✖</button>
                 <span id="loueursCount" class="loueurs-count"></span>
             </div>
+            
+            <!-- Conteneur des cartes -->
             <div id="cardsContainer"></div>
         </div>
 
+        <!-- Modale de crédits -->
         <div id="modal">
             <div id="coreModal">
                 <div id="close" onclick="closeModal()">X</div>

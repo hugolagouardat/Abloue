@@ -1,3 +1,6 @@
+/* Styles principaux de l'application */
+
+/* Layout global */
 html, body {
 	height: 100%;
 	margin: 0;
@@ -12,6 +15,7 @@ body {
 	flex-direction: row;
 }
 
+/* Bouton crédits */
 #credit {
 	position: absolute;
 	bottom: 10px;

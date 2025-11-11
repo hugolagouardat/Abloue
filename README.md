@@ -1,15 +1,37 @@
 # Abloue
 
-Application web de visualisation et gestion de loueurs de matériel par département français.
+Application web de visualisation et gestion de données géographiques par département français.
+
+**Exemple d'utilisation :** Cette application est actuellement configurée pour afficher des loueurs de matériel, mais elle peut être facilement adaptée pour tout type de données nécessitant une visualisation géographique par département (commerces, services, professionnels, événements, etc.).
+
+## 📄 Licences
+
+Ce projet utilise deux licences différentes pour des composants distincts :
+
+- **Code de l'application** (JavaScript, CSS, structure HTML) : [MIT License](LICENSE) © 2025 Hugo Lagouardat & Rudy Alves
+- **Carte SVG de France** (incluse dans `abloue.html`) : [Creative Commons Attribution 4.0 International (CC BY 4.0)](http://creativecommons.org/licenses/by/4.0/) © Régis Enguehard
+
+Ces deux licences sont compatibles et permettent une utilisation libre du projet. Voir le fichier [LICENSE](LICENSE) pour les détails complets de la licence MIT.
+
+## ✨ Caractéristiques principales
+
+- **Fonctionnement autonome** : L'application peut fonctionner **sans serveur web** - il suffit d'ouvrir le fichier `abloue.html` directement dans un navigateur (compatible également avec un serveur web si nécessaire)
+- **Client-side uniquement** : Toutes les données et la logique sont côté client (HTML, CSS, JavaScript)
+- **Personnalisable** : Structure modulaire facile à adapter pour vos propres données
 
 ## 🎯 Fonctionnalités
 
 - **Carte interactive de France** avec départements cliquables
-- **Système de filtrage** par nom de loueur et département
-- **Affichage en cartes** des loueurs avec leurs informations détaillées
+- **Système de filtrage** par nom et département
+- **Affichage en cartes** avec informations détaillées
 - **Interface responsive** avec visualisation claire des données
+- **Données personnalisables** : adaptez facilement le contenu à vos besoins (actuellement configuré pour des loueurs de matériel en exemple)
 
 ## 🚀 Installation et utilisation
+
+**Aucune installation requise !** L'application fonctionne sans serveur web, mais peut aussi être hébergée sur un serveur.
+
+### Utilisation locale (sans serveur)
 
 1. Clonez le dépôt :
 ```bash
@@ -17,9 +39,13 @@ git clone https://github.com/hugolagouardat/Abloue.git
 cd Abloue
 ```
 
-2. Ouvrez `abloue.html` dans votre navigateur web
+2. Ouvrez simplement `abloue.html` dans votre navigateur web (double-clic sur le fichier ou clic droit > Ouvrir avec > Navigateur)
 
-Aucune installation de dépendances n'est nécessaire, l'application fonctionne directement côté client.
+### Utilisation avec serveur web (optionnel)
+
+L'application est également compatible avec tout serveur web (Apache, Nginx, serveur de développement, etc.). Il suffit de placer les fichiers dans le répertoire du serveur.
+
+Aucune dépendance backend n'est nécessaire - l'application fonctionne entièrement côté client.
 
 ## 📁 Structure du projet
 
@@ -47,43 +73,13 @@ Abloue/
 
 ## 🗺️ À propos de la carte
 
-La carte interactive de France est basée sur :
-- **[Abcarte](https://github.com/Abend-core/Abcarte)** - Système de carte interactive
-- **[carte-france-svg](https://github.com/regisenguehard/carte-france-svg)** par Régis Enguehard - Carte SVG de France modifiée avec ajout des départements
+La carte interactive de France utilisée dans cette application est **Abcarte**, une modification de la [carte-france-svg](https://github.com/regisenguehard/carte-france-svg) de Régis Enguehard avec ajout des numéros de département.
 
-### Licence de la carte SVG
+- **Carte originale** : [carte-france-svg](https://github.com/regisenguehard/carte-france-svg) © Régis Enguehard
+- **Licence** : [Creative Commons Attribution 4.0 International (CC BY 4.0)](http://creativecommons.org/licenses/by/4.0/)
+- **Modifications** : Ajout des numéros de département pour créer Abcarte
 
-La carte SVG de France (incluse dans `abloue.html`) est sous :
-
-**[Creative Commons Attribution 4.0 International (CC BY 4.0)](http://creativecommons.org/licenses/by/4.0/)**
-
-© Régis Enguehard - Modifications : ajout des départements
-
-## 📄 Licence
-
-Le code source de l'application Abloue (JavaScript, CSS, structure HTML hors carte SVG) est sous :
-
-**MIT License**
-
-Copyright (c) 2025 Hugo Lagouardat
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Dépôt Abcarte : [github.com/Abend-core/Abcarte](https://github.com/Abend-core/Abcarte)
 
 ## 🛠️ Technologies utilisées
 
@@ -95,6 +91,7 @@ SOFTWARE.
 
 ## 👤 Auteur
 
+**Rudy Alves** - [@Rxdy](https://github.com/Rxdy)
 **Hugo Lagouardat** - [@hugolagouardat](https://github.com/hugolagouardat)
 
 ## 🙏 Remerciements
